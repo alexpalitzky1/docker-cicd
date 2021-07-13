@@ -8,11 +8,16 @@ job('NodeJS example') {
     triggers {
         scm('H/5 * * * *')
     }
-    wrappers {
-        nodejs('nodejs') // this is the name of the NodeJS installation in 
-                         // Manage Jenkins -> Configure Tools -> NodeJS Installations -> Name
-    }
     steps {
-        shell("npm install")
+        dockerBuildAndPublish {
+            repositoryName(alexpalitzky1/docker-cicd)
+            buildContext('basics')
+            tag('${GIT_REVISION,length=9}')
+            registryCredentials('00293142-bacf-45d1-8d84-c5dcbce5ba75')
+            forcePull(false)
+            forceTag(false)
+            createFingerprints(false)
+            skipDecorate()
+        }
     }
 }
