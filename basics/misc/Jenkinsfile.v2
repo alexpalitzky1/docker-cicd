@@ -24,7 +24,7 @@ node {
      mysql.stop()
    }                                     
    stage('docker build/push') {            
-     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+     docker.withRegistry('https://index.docker.io/v1/', '00293142-bacf-45d1-8d84-c5dcbce5ba75') {
        def app = docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.').push()
      }                                     
    }                                       
