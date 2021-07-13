@@ -10,7 +10,7 @@ job('NodeJS example') {
     }
     steps {
         dockerBuildAndPublish {
-            repositoryName(alexpalitzky1/docker-cicd)
+            repositoryName('alexpalitzky1/docker-cicd')
             buildContext('basics')
             tag('${GIT_REVISION,length=9}')
             registryCredentials('00293142-bacf-45d1-8d84-c5dcbce5ba75')
